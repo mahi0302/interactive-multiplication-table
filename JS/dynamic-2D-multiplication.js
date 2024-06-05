@@ -2,7 +2,7 @@ function getValue() {
   let a = document.getElementById("a").value;
   let b = document.getElementById("b").value;
 
-  if (a !== "" && b !== "" && a >= 2 && b <= 100) {
+  if (a !== "" && b !== "" && a >= 2 && a <= 100 && b <= 100) {
     let existingContainerSection = document.querySelector(".container-section");
     if (!existingContainerSection) {
       let containerSection = document.createElement("div");
@@ -31,7 +31,7 @@ function getValue() {
       for (let j = 1; j <= b; j++) {
         let result = i * j;
         let resultItem = document.createElement("span");
-        resultItem.textContent = i + "*" + j + " = " + result + " |";
+        resultItem.textContent = i + "*" + j + " = " + result + " ";
         resultItem.className = "result-item";
         resultLine.appendChild(resultItem);
 
@@ -51,12 +51,10 @@ function getValue() {
   } else {
     if (a === "" || b === "") {
       alert("Fields are empty, please fill them");
-    } else if (a < 2 && b > 100) {
-      alert(
-        "'a' must be above or equal to 2 and 'b' must be below or equal to 100"
-      );
-    } else if (a < 2) {
-      alert("'a' must be above or equal to 2");
+    } else if ((a < 2 || a > 100) && b > 100) {
+      alert("'a' must be between 2 and 100 and 'b' must be below or equal to 100");
+    } else if (a < 2 || a > 100) {
+      alert("'a' must be between 2 and 100");
     } else if (b > 100) {
       alert("'b' must be below or equal to 100");
     }
